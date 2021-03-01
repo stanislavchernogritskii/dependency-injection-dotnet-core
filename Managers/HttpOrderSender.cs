@@ -3,11 +3,12 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using OrderManagement.Interfaces;
 using OrderManagement.Models;
 
 namespace OrderManagement.Managers
 {
-    public class OrderSender
+    public class HttpOrderSender : IOrderSender
     {
         private static readonly HttpClient httpClient = new HttpClient();
 

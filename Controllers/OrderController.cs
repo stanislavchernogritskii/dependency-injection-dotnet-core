@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using OrderManagement.Managers;
+using OrderManagement.Interfaces;
 using OrderManagement.Models;
 
 namespace OrderManagement.Controllers
@@ -9,6 +9,13 @@ namespace OrderManagement.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        private IOrderManager orderManager;
+
+        public OrderController(IOrderManager orderMngr)
+        {
+            orderManager = orderMngr;
+        }
+
         [HttpGet]
         public ActionResult Get()
         {
@@ -16,13 +23,9 @@ namespace OrderManagement.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync(Order order)
+        public ActionResult<string> Post(Order order)
         {
-            var orderManager = new OrderManager();
-
-            await orderManager.Transmit(order);
-
-            return Ok();
+            return Ok(orderManager.Transmit(order));
         }
     }
 }
