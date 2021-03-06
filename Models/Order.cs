@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace OrderManagement.Models
 {
+    [Serializable]
     public class Order
     {
         public string CustomerId { get; set; }

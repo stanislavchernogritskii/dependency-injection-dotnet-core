@@ -6,5 +6,7 @@ namespace OrderManagement.Interfaces
     public interface IOrderManager
     {
         public Task<string> Transmit(Order order);
+
+        public Order Get();
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderManagement.Interfaces;
 using OrderManagement.Models;
+using System.Text.Json;
 
 namespace OrderManagement.Controllers
 {
@@ -19,7 +20,7 @@ namespace OrderManagement.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok("Welcome! Use POST to place an order.");
+            return Ok(JsonSerializer.Serialize(orderManager.Get()));
         }
 
         [HttpPost]
